@@ -8,7 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.kiberion.psychobear.registries.ActivityGroupList;
+import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.swampmachine.api.elements.ButtonEntry;
 import net.kiberion.swampmachine.api.invokables.LambdaInvokable;
 import net.kiberion.swampmachine.api.sources.EntrySource;
@@ -24,7 +24,7 @@ public class MainController extends AbstractStateController implements Initializ
     private static final Logger log = LogManager.getLogger();
     
     @Autowired
-    private ActivityGroupList groupList;
+    private ActivityRegistry groupList;
 
     private ClickableElementList<CommonModelEntityDescriptor> elementList;
 

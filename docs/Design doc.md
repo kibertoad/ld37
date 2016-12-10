@@ -68,9 +68,15 @@ All stats range from 1 to 100.
 
 Groups:
 
-1) Program;
-2) Bear;
-3) Household;
+1) Programming;
+2) Content creation;
+3) Freelancing;
+4) Web-social;
+5) Web-surfing
+6) Shopping
+
+0) Bear;
+0) Household;
 
 Interactions with bear:
 
