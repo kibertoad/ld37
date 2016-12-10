@@ -48,12 +48,12 @@ public class Psychobear extends SpringGameApplication {
     @SuppressWarnings("unused")
     public static void main(String[] args) throws IOException {
 
-    	Psychobear game = new Psychobear();
+        Psychobear game = new Psychobear();
 
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.vSyncEnabled = true;
-        cfg.width = 1920;
-        cfg.height = 1080;
+        cfg.width = 1280;
+        cfg.height = 720;
         cfg.fullscreen = false;
         cfg.useGL30 = true;
         ShaderProgram.prependVertexCode = "#version 140\n#define varying out\n#define attribute in\n";
