@@ -66,6 +66,12 @@ All stats range from 1 to 100.
 13) Interacting with bear;
 14) Fixing stuff.
 
+Groups:
+
+1) Program;
+2) Bear;
+3) Household;
+
 Interactions with bear:
 
 1) Feed him;
