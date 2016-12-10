@@ -1,0 +1,54 @@
+[
+    {
+      "id": "main-menu",
+      "elements": [
+        {
+          "type": "swImage",
+          "id": "background",
+          "image": "main_menu_background",
+          "position": [
+            300,
+            0
+          ]
+        },
+        {
+          "type": "swTable",
+          "id": "table",
+          "position": [
+            1170,
+            410
+          ],
+          "buttons": [
+            {
+              "text": "Do you start a new game?",
+              "onClickEvent": {
+                "type": "changeState",
+                "stateId": "main"
+              }
+            },
+            
+            {
+              "text": "Will you continue an earlier adventure?",
+              "onClickScript": "controller.loadGame()"
+            },
+
+            {
+              "text": "Or should you return to real life, for now... ?",
+              "onClickListener": {
+                "type": "quit"
+              }
+            }
+          ]
+        },
+        {
+          "type": "swLabel",
+          "id": "buttonMenu",
+          "text": "Label",
+          "position": [
+            200,
+            200
+          ]
+        }
+      ]
+    }
+  ]

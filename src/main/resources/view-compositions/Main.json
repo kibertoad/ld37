@@ -1,0 +1,35 @@
+[  
+   {  
+      "id":"main",
+      "elements":[  
+         {  
+            "type":"swImage",
+            "id":"background",
+            "image":"main_menu_background",
+            "position":[  
+               300,
+               150
+            ]
+         },
+         {  
+            "type":"swTable",
+            "id":"activityGroupList",
+            "position":[  
+               700,
+               650
+            ],
+            "buttonSource":"controller.getActivityGroupList()",
+            "zIndex":100
+         },
+         {  
+            "type":"swLabel",
+            "id":"buttonMenu",
+            "text":"Label",
+            "position":[  
+               200,
+               200
+            ]
+         }
+      ]
+   }
+]
