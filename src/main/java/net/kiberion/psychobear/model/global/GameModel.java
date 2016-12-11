@@ -1,4 +1,4 @@
-package net.kiberion.psychobear.states.main;
+package net.kiberion.psychobear.model.global;
 
 import org.springframework.stereotype.Component;
 
