@@ -1,0 +1,17 @@
+[  
+   {  
+      "id":"mainActivityGroups",
+      "elements":[  
+         {  
+            "type":"swTable",
+            "id":"activityGroupList",
+            "position":[  
+               700,
+               650
+            ],
+            "buttonSource":"activityGroupSubView.getActivityGroupList()",
+            "zIndex":100
+         }
+      ]
+   }
+]

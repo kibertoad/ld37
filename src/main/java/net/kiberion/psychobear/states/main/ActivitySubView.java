@@ -18,11 +18,11 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
-@SubView(id = ActivityGroupSubView.ACTIVITY_GROUP_SUB_VIEW_ID, parentView = MainView.class)
-@BoundCompositions(compositions = { "mainActivityGroups" })
-public class ActivityGroupSubView extends AbstractStateSubView<GameModel>{
+@SubView(id = ActivitySubView.ACTIVITY_SUB_VIEW_ID, parentView = MainView.class)
+@BoundCompositions(compositions = { "mainActivities" })
+public class ActivitySubView extends AbstractStateSubView<GameModel>{
 
-    public static final String ACTIVITY_GROUP_SUB_VIEW_ID = "activityGroupSubView";
+    public static final String ACTIVITY_SUB_VIEW_ID = "activitySubView";
     
     @Autowired
     @Getter
@@ -31,39 +31,39 @@ public class ActivityGroupSubView extends AbstractStateSubView<GameModel>{
     @Autowired
     private ActivityRegistry activityRegistry;
 
-    private ClickableElementSourceProvider<CommonModelEntityDescriptor> activityGroupSourceProvider;
+    private ClickableElementSourceProvider<CommonModelEntityDescriptor> activitySourceProvider;
 
-    public void updateActivityGroupList() {
-        activityGroupSourceProvider.fillButtonList();
+    public void updateActivityList() {
+        activitySourceProvider.fillButtonList();
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        activityGroupSourceProvider = new ClickableElementSourceProvider<CommonModelEntityDescriptor>() {
+        activitySourceProvider = new ClickableElementSourceProvider<CommonModelEntityDescriptor>() {
 
             @Override
             protected LambdaInvokable initOnClickEffect(CommonModelEntityDescriptor sourceElement) {
                 return () -> {
-                    controller.onGroupSelected(sourceElement.getId());
+                    controller.onActivitySelected(sourceElement.getId());
                     return null;
                 };
             }
 
             @Override
             public Collection<CommonModelEntityDescriptor> getElementList() {
-                return activityRegistry.getGroups().values();
+                return activityRegistry.getActivitiesWithTag(controller.getSelectedGroup());
             }
 
         };
     }
 
-    public EntrySource<ButtonEntry> getActivityGroupList() {
-        return activityGroupSourceProvider.getButtonSource();
+    public EntrySource<ButtonEntry> getActivityList() {
+        return activitySourceProvider.getButtonSource();
     }
 
     @Override
     public void show() {
-        updateActivityGroupList();
+        updateActivityList();
     }
     
 }
