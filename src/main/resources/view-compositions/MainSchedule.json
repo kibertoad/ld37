@@ -11,6 +11,16 @@
             ],
             "buttonSource":"scheduleSubView.getSchedule()",
             "zIndex":100
+         },
+         {  
+            "type":"swTextButton",
+            "id":"nextTurn",
+            "text":"Start day",
+            "onClickScript": "controller.nextTurn()",
+            "position":[  
+               200,
+               200
+            ]
          }
       ]
    }

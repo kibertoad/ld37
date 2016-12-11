@@ -11,6 +11,16 @@
             ],
             "buttonSource":"activityGroupSubView.getActivityGroupList()",
             "zIndex":100
+         },
+         {  
+            "type":"swTextButton",
+            "id":"backFromActivityGroups",
+            "text":"Cancel",
+            "onClickScript": "controller.cancelGroupSelection()",
+            "position":[  
+               200,
+               200
+            ]
          }
       ]
    }

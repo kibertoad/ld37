@@ -48,13 +48,28 @@ public class MainController extends AbstractStateController {
         getApplicationEventPublisher().publishEvent(new ShowSubViewEvent(this, ActivitySubView.SUB_VIEW_ID, true));
     }
 
+    public void cancelGroupSelection() {
+        log.info ("Cancel group.");
+        getApplicationEventPublisher().publishEvent(new ShowSubViewEvent(this, ScheduleSubView.SUB_VIEW_ID, true));
+    }
+
+    
     public void onActivitySelected(String activityId) {
         log.info ("Activity selected: "+activityId);
+    }
+    
+    public void cancelActivitySelection() {
+        log.info ("Cancel activity.");
+        getApplicationEventPublisher().publishEvent(new ShowSubViewEvent(this, ActivityGroupSubView.SUB_VIEW_ID, true));
     }
     
     public void onDayTimeSelected(DayTime dayTime) {
         log.info ("Daytime selected: "+dayTime);
         this.selectedActivitySlot = scheduledActivities.get(dayTime);
         getApplicationEventPublisher().publishEvent(new ShowSubViewEvent(this, ActivityGroupSubView.SUB_VIEW_ID, true));
+    }
+
+    public void nextTurn() {
+        log.info ("Next turn.");
     }
 }

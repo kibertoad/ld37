@@ -11,6 +11,16 @@
             ],
             "buttonSource":"activitySubView.getActivityList()",
             "zIndex":100
+         },
+         {  
+            "type":"swTextButton",
+            "id":"backFromActivities",
+            "text":"Cancel",
+            "onClickScript": "controller.cancelActivitySelection()",
+            "position":[  
+               200,
+               200
+            ]
          }
       ]
    }
