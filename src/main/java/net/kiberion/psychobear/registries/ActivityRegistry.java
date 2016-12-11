@@ -28,6 +28,7 @@ public class ActivityRegistry {
     @Getter
     private final Map<String, CommonModelEntityDescriptor> groups = new HashMap<>();
     
+    @Getter
     private final Map<String, PsychoBearActivity> activities = new HashMap<>();
 
     public ActivityRegistry() {
@@ -75,6 +76,7 @@ public class ActivityRegistry {
     private void addNewActivity (String id, String name, String group, Collection<Condition> conditions) {
         PsychoBearActivity activity = new PsychoBearActivity(name, id);
         activity.addTag(group);
+        activity.setGroup(group);
         activity.getConditions().addAll(conditions);
         activities.put(id, activity);
     }

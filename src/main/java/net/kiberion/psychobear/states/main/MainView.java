@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.kiberion.psychobear.model.global.GameModel;
+import net.kiberion.psychobear.states.main.subviews.ActivityGroupSubView;
+import net.kiberion.psychobear.states.main.subviews.ScheduleSubView;
 import net.kiberion.swampmachine.gui.annotations.BoundCompositions;
 import net.kiberion.swampmachine.gui.view.AbstractStateView;
 

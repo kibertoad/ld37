@@ -1,4 +1,4 @@
-package net.kiberion.psychobear.states.main;
+package net.kiberion.psychobear.states.main.subviews;
 
 import java.util.Collection;
 
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
+import net.kiberion.psychobear.states.main.MainController;
+import net.kiberion.psychobear.states.main.MainView;
 import net.kiberion.swampmachine.api.elements.ButtonEntry;
 import net.kiberion.swampmachine.api.invokables.LambdaInvokable;
 import net.kiberion.swampmachine.api.sources.EntrySource;
@@ -18,11 +20,11 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
-@SubView(id = ActivitySubView.SUB_VIEW_ID, parentView = MainView.class)
-@BoundCompositions(compositions = { "mainActivities" })
-public class ActivitySubView extends AbstractStateSubView<GameModel>{
+@SubView(id = ActivityGroupSubView.SUB_VIEW_ID, parentView = MainView.class)
+@BoundCompositions(compositions = { "mainActivityGroups" })
+public class ActivityGroupSubView extends AbstractStateSubView<GameModel>{
 
-    public static final String SUB_VIEW_ID = "activitySubView";
+    public static final String SUB_VIEW_ID = "activityGroupSubView";
     
     @Autowired
     @Getter
@@ -31,40 +33,40 @@ public class ActivitySubView extends AbstractStateSubView<GameModel>{
     @Autowired
     private ActivityRegistry activityRegistry;
 
-    private ClickableElementSourceProvider<CommonModelEntityDescriptor> activitySourceProvider;
+    private ClickableElementSourceProvider<CommonModelEntityDescriptor> activityGroupSourceProvider;
 
-    public void updateActivityList() {
-        activitySourceProvider.fillButtonList();
+    public void updateActivityGroupList() {
+        activityGroupSourceProvider.fillButtonList();
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        activitySourceProvider = new ClickableElementSourceProvider<CommonModelEntityDescriptor>() {
+        activityGroupSourceProvider = new ClickableElementSourceProvider<CommonModelEntityDescriptor>() {
 
             @Override
             protected LambdaInvokable initOnClickEffect(CommonModelEntityDescriptor sourceElement) {
                 return () -> {
-                    controller.onActivitySelected(sourceElement.getId());
+                    controller.onGroupSelected(sourceElement.getId());
                     return null;
                 };
             }
 
             @Override
             public Collection<CommonModelEntityDescriptor> getElementList() {
-                return activityRegistry.getActivitiesWithTag(controller.getSelectedGroup());
+                return activityRegistry.getGroups().values();
             }
 
         };
     }
 
-    public EntrySource<ButtonEntry> getActivityList() {
-        return activitySourceProvider.getButtonSource();
+    public EntrySource<ButtonEntry> getActivityGroupList() {
+        return activityGroupSourceProvider.getButtonSource();
     }
 
     @Override
     public void show() {
         super.show();
-        updateActivityList();
+        updateActivityGroupList();
     }
     
 }
