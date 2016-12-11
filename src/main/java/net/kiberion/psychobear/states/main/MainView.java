@@ -14,11 +14,14 @@ public class MainView extends AbstractStateView<GameModel>{
     @Autowired
     private ActivityGroupSubView activityGroupSubView;
     
+    @Autowired
+    private ScheduleSubView scheduleSubView;
+    
     @Override
     public void show() {
         super.show();
         
-        activityGroupSubView.show();
+        scheduleSubView.show();
     }
     
 }

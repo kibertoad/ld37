@@ -18,11 +18,11 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
-@SubView(id = ActivitySubView.ACTIVITY_SUB_VIEW_ID, parentView = MainView.class)
+@SubView(id = ActivitySubView.SUB_VIEW_ID, parentView = MainView.class)
 @BoundCompositions(compositions = { "mainActivities" })
 public class ActivitySubView extends AbstractStateSubView<GameModel>{
 
-    public static final String ACTIVITY_SUB_VIEW_ID = "activitySubView";
+    public static final String SUB_VIEW_ID = "activitySubView";
     
     @Autowired
     @Getter
@@ -63,6 +63,7 @@ public class ActivitySubView extends AbstractStateSubView<GameModel>{
 
     @Override
     public void show() {
+        super.show();
         updateActivityList();
     }
     
