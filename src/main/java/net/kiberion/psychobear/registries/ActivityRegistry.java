@@ -80,7 +80,7 @@ public class ActivityRegistry {
         addNewVideo("programmingDummies", "Programming for dummies", PlayerModel.SKILL_PROGRAMMING, 5,
                 PlayerModel.STAT_INSANITY, 1);
 
-        addNewVideo("cookingDummies", "Cooking for dummies", PlayerModel.SKILL_COOKING, 5, PlayerModel.STAT_BOREDOM, 2);
+        //addNewVideo("cookingDummies", "Cooking for dummies", PlayerModel.SKILL_COOKING, 5, PlayerModel.STAT_BOREDOM, 2);
 
         addNewVideo("writingDummies", "Poetry for dummies", PlayerModel.SKILL_WRITING, 5, PlayerModel.STAT_INSPIRATION,
                 2);

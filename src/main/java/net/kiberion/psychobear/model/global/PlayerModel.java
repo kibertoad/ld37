@@ -61,7 +61,7 @@ public class PlayerModel implements ApplicationEventPublisherAware{
         skills.put(SKILL_DRAWING, new ObservableInt(0));
         skills.put(SKILL_WEBSOCIAL, new ObservableInt(0));
         skills.put(SKILL_PHILOSOPHY, new ObservableInt(0));
-        skills.put(SKILL_COOKING, new ObservableInt(0));
+        //skills.put(SKILL_COOKING, new ObservableInt(0));
         
         freelanceProgress.put(SKILL_PROGRAMMING, new ObservableInt(0));
         freelanceProgress.put(SKILL_WRITING, new ObservableInt(0));
