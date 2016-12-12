@@ -3,15 +3,6 @@
       "id":"main",
       "elements":[  
          {  
-            "type":"swImage",
-            "id":"background",
-            "image":"main_menu_background",
-            "position":[  
-               0,
-               0
-            ]
-         },
-         {  
             "type":"swLabel",
             "id":"buttonMenu",
             "text":"Label",

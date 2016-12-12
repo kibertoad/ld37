@@ -31,8 +31,8 @@ public class MainView extends AbstractStateView<GameModel>{
     private StatsSubView statsSubView;
     
     @Override
-    protected Collection<AbstractStateSubView<?>> getAutoEnabledSubViews() {
-        return ListUtils.buildList(scheduleSubView, statsSubView);
+    protected Collection<Class<? extends AbstractStateSubView<?>>> getAutoEnabledSubViews() {
+        return ListUtils.buildList(ScheduleSubView.class, StatsSubView.class);
     }
     
 }

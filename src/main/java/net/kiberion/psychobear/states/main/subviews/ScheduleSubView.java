@@ -16,6 +16,7 @@ import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.psychobear.states.main.MainController;
 import net.kiberion.psychobear.states.main.MainController.DayTime;
 import net.kiberion.psychobear.states.main.MainView;
+import net.kiberion.swampmachine.annotations.SubView;
 import net.kiberion.swampmachine.api.elements.ButtonEntry;
 import net.kiberion.swampmachine.api.invokables.LambdaInvokable;
 import net.kiberion.swampmachine.api.sources.EntrySource;
@@ -25,7 +26,6 @@ import net.kiberion.swampmachine.gui.annotations.BoundCompositions;
 import net.kiberion.swampmachine.gui.elements.SwampTextButton;
 import net.kiberion.swampmachine.gui.providers.ClickableElementSourceProvider;
 import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
-import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
 @SubView(id = ScheduleSubView.SUB_VIEW_ID, parentViews = {MainView.class})

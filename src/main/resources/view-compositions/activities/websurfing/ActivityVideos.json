@@ -9,7 +9,8 @@
             "position":[  
                200,
                200
-            ]
+            ],
+            "zIndex":100
          },
          {  
             "type":"swTable",

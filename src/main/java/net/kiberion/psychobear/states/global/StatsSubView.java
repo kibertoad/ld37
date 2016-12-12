@@ -17,17 +17,17 @@ import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.states.activity.ProcessActivityView;
 import net.kiberion.psychobear.states.main.MainView;
+import net.kiberion.swampmachine.annotations.SubView;
 import net.kiberion.swampmachine.api.elements.TextEntry;
 import net.kiberion.swampmachine.api.sources.EntrySource;
 import net.kiberion.swampmachine.gui.annotations.BoundCompositions;
 import net.kiberion.swampmachine.gui.elements.CommonTextEntry;
 import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
-import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 import net.kiberion.swampmachine.subscription.ObservableInt;
 import net.kiberion.swampmachine.subscription.ObservableTextEntrySource;
 
 @Component
-@SubView(id = StatsSubView.SUB_VIEW_ID, parentViews = {MainView.class, ProcessActivityView.class})
+@SubView(id = StatsSubView.SUB_VIEW_ID, parentViews = {MainView.class, ProcessActivityView.class}, isConstant = true, zIndex = 1)
 @BoundCompositions(compositions = { "stats" })
 public class StatsSubView extends AbstractStateSubView<GameModel> {
 

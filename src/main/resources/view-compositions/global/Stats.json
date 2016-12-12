@@ -3,11 +3,22 @@
       "id":"stats",
       "elements":[  
          {  
+            "type":"swImage",
+            "id":"background",
+            "image":"main_menu_background",
+            "position":[  
+               0,
+               0
+            ],
+            "zIndex":1
+         },
+         
+         {  
             "type":"swLabelTable",
             "id":"statsList",
             "position":[  
                950,
-               750
+               700
             ],
             "labelSource":"statsView.getStatsList()",
             "zIndex":100
@@ -18,7 +29,7 @@
             "id":"skillList",
             "position":[  
                1100,
-               750
+               700
             ],
             "labelSource":"statsView.getSkillsList()",
             "zIndex":100

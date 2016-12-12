@@ -21,6 +21,7 @@ import net.kiberion.swampmachine.annotations.ImmutableRegistry;
 import net.kiberion.swampmachine.api.common.Condition;
 import net.kiberion.swampmachine.entities.common.impl.CommonModelEntityDescriptor;
 import net.kiberion.swampmachine.gui.listenerconditions.ObservableIntCondition.ComparisonOperator;
+import net.kiberion.swampmachine.utils.MapUtils;
 
 @ImmutableRegistry
 @Component
@@ -78,17 +79,30 @@ public class ActivityRegistry {
         
         
         //videos
-        addNewVideo("programmingDummies", "Programming for dummies", "programming", 5);
-        addNewVideo("cookingDummies", "Cooking for dummies", "cooking", 5);
-        addNewVideo("writingDummies", "Poetry for dummies", "poetry", 5);
-        addNewVideo("drawingDummies", "Drawing for dummies", "drawing", 5);
-        addNewVideo("marketingDummies", "Marketing for dummies", "marketing", 5);
-        addNewVideo("philosophyDummies", "Philosophy for dummies", "philosophy", 5);
+        addNewVideo("programmingDummies", "Programming for dummies", PlayerModel.SKILL_PROGRAMMING, 5,
+                PlayerModel.STAT_INSANITY, 1);
+        
+        addNewVideo("cookingDummies", "Cooking for dummies", PlayerModel.SKILL_COOKING, 5,
+                PlayerModel.STAT_BOREDOM, 2);
+        
+        addNewVideo("writingDummies", "Poetry for dummies", PlayerModel.SKILL_WRITING, 5,
+                PlayerModel.STAT_INSPIRATION, 2);
+        
+        addNewVideo("drawingDummies", "Drawing for dummies", PlayerModel.SKILL_DRAWING, 5,
+                PlayerModel.STAT_INSPIRATION, 4);
+        
+        addNewVideo("marketingDummies", "Marketing for dummies", PlayerModel.SKILL_WEBSOCIAL, 5,
+                PlayerModel.STAT_BOREDOM, 2);
+        
+        addNewVideo("philosophyDummies", "Philosophy for dummies", PlayerModel.SKILL_PHILOSOPHY, 5,
+                PlayerModel.STAT_INSANITY, 5, PlayerModel.STAT_INSPIRATION, 5);
     }
     
 
-    private void addNewVideo (String id, String name, String skill, int skillIncrease) {
-        PsychoBearVideo video = new PsychoBearVideo(id, name, skill, skillIncrease);
+    private void addNewVideo (String id, String name, String skillIncreased, Integer amountIncreased, Object... params) {
+        Map<String, Integer> statChanges = MapUtils.buildMap(params);
+        
+        PsychoBearVideo video = new PsychoBearVideo(name, id, skillIncreased, amountIncreased, statChanges);
         videos.put(id, video);
     }
     

@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationEvent;
 
 import lombok.Getter;
 
+@Deprecated
 public class ChangeStatEvent extends ApplicationEvent{
 
     /**
