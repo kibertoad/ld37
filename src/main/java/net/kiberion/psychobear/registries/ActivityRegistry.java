@@ -78,6 +78,7 @@ public class ActivityRegistry {
         activity.addTag(group);
         activity.setGroup(group);
         activity.getConditions().addAll(conditions);
+        activity.setViewName("activity-"+id+"-view");
         activities.put(id, activity);
     }
     

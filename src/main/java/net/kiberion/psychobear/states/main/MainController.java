@@ -96,4 +96,14 @@ public class MainController extends AbstractStateController {
     public PsychoBearActivity getActivity (DayTime dayTime) {
         return scheduledActivities.get(dayTime).getValue();
     }
+
+    public boolean isAllActivitiesSelected() {
+        for (ObservableObject<PsychoBearActivity> activity : scheduledActivities.values()) {
+            if (activity.getValue() == null) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 }

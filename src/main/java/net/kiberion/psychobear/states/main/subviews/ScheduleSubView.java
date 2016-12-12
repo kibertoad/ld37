@@ -20,7 +20,9 @@ import net.kiberion.swampmachine.api.elements.ButtonEntry;
 import net.kiberion.swampmachine.api.invokables.LambdaInvokable;
 import net.kiberion.swampmachine.api.sources.EntrySource;
 import net.kiberion.swampmachine.entities.common.impl.CommonModelEntityDescriptor;
+import net.kiberion.swampmachine.gui.annotations.Bound;
 import net.kiberion.swampmachine.gui.annotations.BoundCompositions;
+import net.kiberion.swampmachine.gui.elements.SwampTextButton;
 import net.kiberion.swampmachine.gui.providers.ClickableElementSourceProvider;
 import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
@@ -44,6 +46,9 @@ public class ScheduleSubView extends AbstractStateSubView<GameModel> {
 
     @Autowired
     private ActivityRegistry activityRegistry;
+
+    @Bound(id = "nextTurn")
+    private SwampTextButton nextTurn;
 
     private ClickableElementSourceProvider<CommonModelEntityDescriptor> activityGroupSourceProvider;
 
@@ -75,7 +80,7 @@ public class ScheduleSubView extends AbstractStateSubView<GameModel> {
                 text.append(sourceElement.getName());
                 if (activity != null) {
                     CommonModelEntityDescriptor group = activityRegistry.getGroups().get(activity.getGroup());
-                    Validate.notNull(group, "Unknown group: "+activity.getGroup());
+                    Validate.notNull(group, "Unknown group: " + activity.getGroup());
                     text.append(": ").append(group.getName()).append(" - ").append(activity.getName());
                 }
                 return text.toString();
@@ -92,6 +97,10 @@ public class ScheduleSubView extends AbstractStateSubView<GameModel> {
     public void show() {
         super.show();
         updateActivityGroupList();
+
+        boolean isAllActivitiesSelected = controller.isAllActivitiesSelected();
+        nextTurn.setDisabled(!isAllActivitiesSelected);
+        nextTurn.setVisible(isAllActivitiesSelected);
     }
 
 }

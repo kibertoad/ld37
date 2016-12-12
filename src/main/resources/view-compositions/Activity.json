@@ -1,0 +1,25 @@
+[  
+   {  
+      "id":"process-activity",
+      "elements":[  
+         {  
+            "type":"swImage",
+            "id":"background",
+            "image":"main_menu_background",
+            "position":[  
+               300,
+               150
+            ]
+         },
+         {  
+            "type":"swLabel",
+            "id":"buttonMenu",
+            "text":"Label",
+            "position":[  
+               200,
+               200
+            ]
+         }
+      ]
+   }
+]

@@ -1,0 +1,16 @@
+[  
+   {  
+      "id":"activity-videos",
+      "elements":[  
+         {  
+            "type":"swLabel",
+            "id":"Text",
+            "text":"After surfing for a while, this is what you found. What do you want to watch?",
+            "position":[  
+               200,
+               200
+            ]
+         }
+      ]
+   }
+]
