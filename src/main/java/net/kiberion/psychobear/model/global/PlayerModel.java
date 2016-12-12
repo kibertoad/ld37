@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.mutable.MutableInt;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Component;
@@ -38,9 +37,6 @@ public class PlayerModel implements ApplicationEventPublisherAware{
     
     private final Map<String, ObservableInt> freelanceProgress = new HashMap<>();
     private final Map<String, ObservableInt> freelanceQuality = new HashMap<>();
-    
-    @Getter
-    private final MutableInt cash = new MutableInt ();
     
     @Getter
     private final Map<String, ObservableInt> stats = new LinkedHashMap<>();
@@ -112,7 +108,10 @@ public class PlayerModel implements ApplicationEventPublisherAware{
             changeStat (entry.getKey(), entry.getValue());
         }
     }
-    
+
+    public int getCash () {
+        return getStats().get(STAT_CASH).getValue();
+    }
     
     public void changeStat (String statId, int delta) {
         stats.get(statId).applyDelta(delta);

@@ -8,11 +8,6 @@ import net.kiberion.swampmachine.entities.common.impl.CommonModelEntityDescripto
 
 public class PsychoBearVideo extends CommonModelEntityDescriptor {
 
-    //Which view is opened when this activity is processed
-    @Getter
-    @Setter
-    private String viewName;
-    
     @Getter
     @Setter
     private String skill;

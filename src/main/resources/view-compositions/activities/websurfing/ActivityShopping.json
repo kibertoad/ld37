@@ -1,0 +1,27 @@
+[  
+   {  
+      "id":"activity-shopping",
+      "elements":[  
+         {  
+            "type":"swLabel",
+            "id":"Text",
+            "text":"What do you want to buy?",
+            "position":[  
+               200,
+               200
+            ],
+            "zIndex":100
+         },
+         {  
+            "type":"swTable",
+            "id":"goodsList",
+            "position":[  
+               400,
+               490
+            ],
+            "buttonSource":"activityShoppingView.getGoodsList()",
+            "zIndex":100
+         }         
+      ]
+   }
+]

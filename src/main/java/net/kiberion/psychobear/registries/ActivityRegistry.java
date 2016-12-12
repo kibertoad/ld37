@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 
 import lombok.Getter;
 import net.kiberion.psychobear.model.PsychoBearActivity;
+import net.kiberion.psychobear.model.PsychoBearGoods;
 import net.kiberion.psychobear.model.PsychoBearVideo;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.states.activity.subviews.FreelanceSubView;
@@ -42,6 +43,9 @@ public class ActivityRegistry {
     @Getter
     private final Map<String, PsychoBearVideo> videos = new HashMap<>();
 
+    @Getter
+    private final Map<String, PsychoBearGoods> goods = new HashMap<>();
+
     public ActivityRegistry() {
         // activity groups
         addNewGroup("programming", "Programming");
@@ -55,32 +59,37 @@ public class ActivityRegistry {
 
         addNewActivity("videos", "Watch online videos", "websurfing", "programming", conditions);
         addNewActivity("shopping", "Shop online", "websurfing", "", conditions);
-        //addNewActivity("darknet", "Surf the Darknet", "websurfing", "", conditions);
+        // addNewActivity("darknet", "Surf the Darknet", "websurfing", "",
+        // conditions);
 
-        //addNewActivity("publishing", "Publish content", "websocial", conditions);
+        // addNewActivity("publishing", "Publish content", "websocial",
+        // conditions);
         addNewActivity("persona", "Social media persona", "websocial", "websocial", conditions);
         addNewActivity("cult", "Cult", "websocial", "philosophy", conditions);
 
-        //addNewActivity("website", "Website", "programming", conditions);
-        //addNewActivity("games", "Games", "programming", conditions);
+        // addNewActivity("website", "Website", "programming", conditions);
+        // addNewActivity("games", "Games", "programming", conditions);
         addNewActivity("botnet", "Botnet", "programming", "programming", conditions);
-        //addNewActivity("ai", "AI", "programming", conditions);
+        // addNewActivity("ai", "AI", "programming", conditions);
 
         addNewActivity("poetry", "Poetry", "content", PlayerModel.SKILL_WRITING, conditions);
         addNewActivity("fanfiction", "Fanfiction", "content", PlayerModel.SKILL_WRITING, conditions);
         addNewActivity("webcomics", "Webcomics", "content", PlayerModel.SKILL_DRAWING, conditions);
         addNewActivity("record", "Video", "content", PlayerModel.SKILL_WEBSOCIAL, conditions);
 
-        addNewActivity("freelance-programming", "Programming", "freelancing", PlayerModel.SKILL_PROGRAMMING, conditions);
+        addNewActivity("freelance-programming", "Programming", "freelancing", PlayerModel.SKILL_PROGRAMMING,
+                conditions);
         addNewActivity("freelance-art", "Art", "freelancing", PlayerModel.SKILL_DRAWING, conditions);
         addNewActivity("freelance-writing", "Copywriting", "freelancing", PlayerModel.SKILL_WRITING, conditions);
-        addNewActivity("freelance-marketing", "Social media marketing", "freelancing", PlayerModel.SKILL_WEBSOCIAL, conditions);
+        addNewActivity("freelance-marketing", "Social media marketing", "freelancing", PlayerModel.SKILL_WEBSOCIAL,
+                conditions);
 
         // videos
         addNewVideo("programmingDummies", "Programming for dummies", PlayerModel.SKILL_PROGRAMMING, 5,
                 PlayerModel.STAT_INSANITY, 1);
 
-        //addNewVideo("cookingDummies", "Cooking for dummies", PlayerModel.SKILL_COOKING, 5, PlayerModel.STAT_BOREDOM, 2);
+        // addNewVideo("cookingDummies", "Cooking for dummies",
+        // PlayerModel.SKILL_COOKING, 5, PlayerModel.STAT_BOREDOM, 2);
 
         addNewVideo("writingDummies", "Poetry for dummies", PlayerModel.SKILL_WRITING, 5, PlayerModel.STAT_INSPIRATION,
                 2);
@@ -93,6 +102,19 @@ public class ActivityRegistry {
 
         addNewVideo("philosophyDummies", "Philosophy for dummies", PlayerModel.SKILL_PHILOSOPHY, 5,
                 PlayerModel.STAT_INSANITY, 5, PlayerModel.STAT_INSPIRATION, 5);
+
+        // goods
+
+        addNewGoods("dumplings", "Frozen dumplings", 10, PlayerModel.STAT_HEALTH, -5, PlayerModel.STAT_SATIATION,
+                30);
+        addNewGoods("pizza", "Frozen pizza", 20, PlayerModel.STAT_HEALTH, -10, PlayerModel.STAT_SATIATION,
+                70, PlayerModel.STAT_BOREDOM, -5);
+        addNewGoods("spinach", "Spinach", 15, PlayerModel.STAT_HEALTH, 5, PlayerModel.STAT_SATIATION, 5);
+        addNewGoods("lasagne", "Lasagne", 30, PlayerModel.STAT_HEALTH, 5, PlayerModel.STAT_SATIATION, 20,
+                PlayerModel.STAT_INSANITY, -5);
+        addNewGoods("whiskey", "Whiskey", 30, PlayerModel.STAT_HEALTH, 5, PlayerModel.STAT_INSANITY, 5,
+                PlayerModel.STAT_INSPIRATION, 5, PlayerModel.STAT_BOREDOM, -5);
+
     }
 
     private void addNewVideo(String id, String name, String skillIncreased, Integer amountIncreased, Object... params) {
@@ -100,6 +122,13 @@ public class ActivityRegistry {
 
         PsychoBearVideo video = new PsychoBearVideo(name, id, skillIncreased, amountIncreased, statChanges);
         videos.put(id, video);
+    }
+
+    private void addNewGoods(String id, String name, int price, Object... params) {
+        Map<String, Integer> statChanges = MapUtils.buildMap(params);
+
+        PsychoBearGoods newGoods = new PsychoBearGoods(name, id, price, statChanges);
+        goods.put(id, newGoods);
     }
 
     private Condition createSkillCondition(String skillName, int skillValue, ComparisonOperator operator) {
