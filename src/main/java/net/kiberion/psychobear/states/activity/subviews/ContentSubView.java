@@ -22,13 +22,13 @@ import net.kiberion.swampmachine.subscription.ObservableTextEntrySource;
 import net.kiberion.swampmachine.utils.ListUtils;
 
 @Component
-@SubView(id = FreelanceSubView.SUB_VIEW_ID, parentViews = { ProcessActivityView.class })
-@BoundCompositions(compositions = { "activity-freelance" })
-public class FreelanceSubView extends AbstractStateSubView<GameModel> {
+@SubView(id = ContentSubView.SUB_VIEW_ID, parentViews = { ProcessActivityView.class })
+@BoundCompositions(compositions = { "activity-content" })
+public class ContentSubView extends AbstractStateSubView<GameModel> {
 
     private static final Logger log = LogManager.getLogger();
 
-    public static final String SUB_VIEW_ID = "activityFreelanceView";
+    public static final String SUB_VIEW_ID = "activityContentView";
 
     private final ObservableTextEntrySource entrySource = new ObservableTextEntrySource();
 
@@ -48,21 +48,19 @@ public class FreelanceSubView extends AbstractStateSubView<GameModel> {
     protected void processProgress() {
         PsychoBearActivity activity = turnProcessor.getCurrentActivity();
         String skill = activity.getSkill();
-        int progress = 34;
+        int progress = 20;
         int quality = 10;
-        playerModel.addFreelanceProgress(skill, progress);
-        playerModel.addFreelanceQuality(skill, quality);
+        playerModel.addContentProgress(skill, progress);
+        playerModel.addContentQuality(skill, quality);
 
         String taskName = StringUtils.lowerCase(activity.getName());
         String resultText;
-        if (playerModel.getFreelanceProgress(skill) >= 100) {
-            int payment = 10;
-            resultText = "You have finished your "+taskName+" task. Your payment is $" + payment;
-            playerModel.changeStat(PlayerModel.STAT_CASH, payment);
-            playerModel.resetFreelanceProgress(skill);
+        if (playerModel.getContentProgress(skill) >= 100) {
+            resultText = "You have finished your " + taskName + " content creation.";
+            playerModel.resetContentProgress(skill);
         } else {
-            resultText = "You keep working on your "+taskName+" task. You are " + playerModel.getFreelanceProgress(skill)
-                    + "% done.";
+            resultText = "You keep working on your " + taskName + " task. You are "
+                    + playerModel.getContentProgress(skill) + "% done.";
         }
         TextEntry text = new CommonTextEntry(resultText);
 

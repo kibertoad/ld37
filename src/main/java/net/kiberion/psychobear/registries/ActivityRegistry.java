@@ -18,6 +18,7 @@ import net.kiberion.psychobear.model.PsychoBearActivity;
 import net.kiberion.psychobear.model.PsychoBearGoods;
 import net.kiberion.psychobear.model.PsychoBearVideo;
 import net.kiberion.psychobear.model.global.PlayerModel;
+import net.kiberion.psychobear.states.activity.subviews.ContentSubView;
 import net.kiberion.psychobear.states.activity.subviews.FreelanceSubView;
 import net.kiberion.swampmachine.annotations.ImmutableRegistry;
 import net.kiberion.swampmachine.api.common.Condition;
@@ -73,7 +74,8 @@ public class ActivityRegistry {
         // addNewActivity("ai", "AI", "programming", conditions);
 
         addNewActivity("poetry", "Poetry", "content", PlayerModel.SKILL_WRITING, conditions);
-        addNewActivity("fanfiction", "Fanfiction", "content", PlayerModel.SKILL_WRITING, conditions);
+        addNewActivity("games", "Games", "content", PlayerModel.SKILL_PROGRAMMING, conditions);
+        //addNewActivity("fanfiction", "Fanfiction", "content", PlayerModel.SKILL_WRITING, conditions);
         addNewActivity("webcomics", "Webcomics", "content", PlayerModel.SKILL_DRAWING, conditions);
         addNewActivity("record", "Video", "content", PlayerModel.SKILL_WEBSOCIAL, conditions);
 
@@ -105,10 +107,9 @@ public class ActivityRegistry {
 
         // goods
 
-        addNewGoods("dumplings", "Frozen dumplings", 10, PlayerModel.STAT_HEALTH, -5, PlayerModel.STAT_SATIATION,
-                30);
-        addNewGoods("pizza", "Frozen pizza", 20, PlayerModel.STAT_HEALTH, -10, PlayerModel.STAT_SATIATION,
-                70, PlayerModel.STAT_BOREDOM, -5);
+        addNewGoods("dumplings", "Frozen dumplings", 10, PlayerModel.STAT_HEALTH, -5, PlayerModel.STAT_SATIATION, 30);
+        addNewGoods("pizza", "Frozen pizza", 20, PlayerModel.STAT_HEALTH, -10, PlayerModel.STAT_SATIATION, 70,
+                PlayerModel.STAT_BOREDOM, -5);
         addNewGoods("spinach", "Spinach", 15, PlayerModel.STAT_HEALTH, 5, PlayerModel.STAT_SATIATION, 5);
         addNewGoods("lasagne", "Lasagne", 30, PlayerModel.STAT_HEALTH, 5, PlayerModel.STAT_SATIATION, 20,
                 PlayerModel.STAT_INSANITY, -5);
@@ -147,10 +148,12 @@ public class ActivityRegistry {
         activity.getConditions().addAll(conditions);
 
         String viewName;
-        if (!group.equals("freelancing")) {
-            viewName = "activity" + StringUtils.capitalize(id) + "View";
-        } else {
+        if (group.equals("freelancing")) {
             viewName = FreelanceSubView.SUB_VIEW_ID;
+        } else if (group.equals("content")) {
+            viewName = ContentSubView.SUB_VIEW_ID;
+        } else {
+            viewName = "activity" + StringUtils.capitalize(id) + "View";
         }
 
         log.info("Binding view name: " + viewName);

@@ -1,0 +1,30 @@
+[  
+   {  
+      "id":"activity-content",
+      "elements":[  
+         {  
+            "type":"swLabelTable",
+            "id":"resultText",
+            "position":[  
+               400,
+               400
+            ],
+            "labelSource":"activityContentView.getProgressText()",
+            "zIndex":100
+         },
+         
+         {  
+            "type":"swTextButton",
+            "id":"okButton",
+            "text":"OK",
+            "onClickScript": "controller.activityFinished()",
+            "position":[  
+               840,
+               270
+            ]
+         }
+         
+                  
+      ]
+   }
+]
