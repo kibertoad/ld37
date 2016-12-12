@@ -99,8 +99,8 @@ public class ScheduleSubView extends AbstractStateSubView<GameModel> {
         updateActivityGroupList();
 
         boolean isAllActivitiesSelected = controller.isAllActivitiesSelected();
-        nextTurn.setDisabled(!isAllActivitiesSelected);
-        nextTurn.setVisible(isAllActivitiesSelected);
+        //nextTurn.setDisabled(!isAllActivitiesSelected);
+        //nextTurn.setVisible(isAllActivitiesSelected);
     }
 
 }

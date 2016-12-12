@@ -9,9 +9,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import lombok.Getter;
 import net.kiberion.psychobear.model.PsychoBearActivity;
+import net.kiberion.psychobear.model.PsychoBearVideo;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.swampmachine.annotations.ImmutableRegistry;
 import net.kiberion.swampmachine.api.common.Condition;
@@ -31,13 +33,20 @@ public class ActivityRegistry {
     @Getter
     private final Map<String, PsychoBearActivity> activities = new HashMap<>();
 
+    @Getter
+    private final Map<String, PsychoBearVideo> videos = new HashMap<>();
+
     public ActivityRegistry() {
+        //activity groups
         addNewGroup("programming", "Programming");
         addNewGroup("content", "Content creation");
         addNewGroup("freelancing", "Freelancing");
         addNewGroup("websocial", "Web-social");
         addNewGroup("websurfing", "Websurfing");
         
+        
+        
+        //activities
         List<Condition> conditions = new ArrayList<>();
         
         addNewActivity("videos", "Watch online videos", "websurfing", conditions);
@@ -62,6 +71,21 @@ public class ActivityRegistry {
         addNewActivity("freelance-art", "Art", "freelancing", conditions);
         addNewActivity("freelance-writing", "Copywriting", "freelancing", conditions);
         addNewActivity("freelance-marketing", "Social media marketing", "freelancing", conditions);
+        
+        
+        //videos
+        addNewVideo("programmingDummies", "Programming for dummies", "programming", 5);
+        addNewVideo("cookingDummies", "Cooking for dummies", "cooking", 5);
+        addNewVideo("poetryDummies", "Poetry for dummies", "poetry", 5);
+        addNewVideo("drawingDummies", "Drawing for dummies", "drawing", 5);
+        addNewVideo("marketingDummies", "Marketing for dummies", "marketing", 5);
+        addNewVideo("philosophyDummies", "Philosophy for dummies", "philosophy", 5);
+    }
+    
+
+    private void addNewVideo (String id, String name, String skill, int skillIncrease) {
+        PsychoBearVideo video = new PsychoBearVideo(id, name, skill, skillIncrease);
+        videos.put(id, video);
     }
     
     private Condition createSkillCondition (String skillName, int skillValue, ComparisonOperator operator) {
@@ -78,7 +102,7 @@ public class ActivityRegistry {
         activity.addTag(group);
         activity.setGroup(group);
         activity.getConditions().addAll(conditions);
-        activity.setViewName("activity-"+id+"-view");
+        activity.setViewName("activity"+StringUtils.capitalize(id)+"View");
         activities.put(id, activity);
     }
     

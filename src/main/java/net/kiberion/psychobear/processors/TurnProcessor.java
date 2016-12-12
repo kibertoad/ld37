@@ -8,9 +8,11 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
+import net.kiberion.psychobear.events.FinishedProcessingActivityEvent;
 import net.kiberion.psychobear.model.PsychoBearActivity;
 import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.states.activity.ProcessActivityState;
@@ -47,13 +49,25 @@ public class TurnProcessor implements ApplicationEventPublisherAware {
         processNextActivity();
     }
 
+    @EventListener
+    public void processNextActivity(FinishedProcessingActivityEvent event) {
+        processNextActivity();
+    }
+
     public void processNextActivity() {
         if (!iterator.hasNext()) {
             eventPublisher.publishEvent(new ChangeStateEvent(this, MainState.MAIN_STATE_ID));
         } else {
             this.currentActivity = iterator.next();
-            log.info("Now processing: " + currentActivity);
-            eventPublisher.publishEvent(new ShowSubViewEvent(this, this.currentActivity.getViewName(), true));
+
+            // ToDo remove this block later
+            if (currentActivity == null) {
+                processNextActivity();
+            } else {
+
+                log.info("Now processing: " + currentActivity);
+                eventPublisher.publishEvent(new ShowSubViewEvent(this, this.currentActivity.getViewName(), true));
+            }
         }
     }
 
