@@ -7,8 +7,8 @@
             "id":"background",
             "image":"main_menu_background",
             "position":[  
-               300,
-               150
+               0,
+               0
             ]
          },
          {  

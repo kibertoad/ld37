@@ -6,8 +6,8 @@
             "type":"swTable",
             "id":"activityList",
             "position":[  
-               700,
-               650
+               400,
+               490
             ],
             "buttonSource":"activitySubView.getActivityList()",
             "zIndex":100

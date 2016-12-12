@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -24,6 +26,8 @@ import net.kiberion.swampmachine.gui.listenerconditions.ObservableIntCondition.C
 @Component
 public class ActivityRegistry {
 
+    private static final Logger log = LogManager.getLogger();
+    
     @Autowired
     private PlayerModel playerModel;
     
@@ -102,7 +106,11 @@ public class ActivityRegistry {
         activity.addTag(group);
         activity.setGroup(group);
         activity.getConditions().addAll(conditions);
-        activity.setViewName("activity"+StringUtils.capitalize(id)+"View");
+        
+        String viewName = "activity"+StringUtils.capitalize(id)+"View";
+        log.info("Binding view name: "+viewName);
+        
+        activity.setViewName(viewName);
         activities.put(id, activity);
     }
     

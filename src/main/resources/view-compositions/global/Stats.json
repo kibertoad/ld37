@@ -1,0 +1,17 @@
+[  
+   {  
+      "id":"stats",
+      "elements":[  
+         {  
+            "type":"swLabelTable",
+            "id":"statsList",
+            "position":[  
+               950,
+               750
+            ],
+            "labelSource":"statsView.getStatList()",
+            "zIndex":100
+         }         
+      ]
+   }
+]

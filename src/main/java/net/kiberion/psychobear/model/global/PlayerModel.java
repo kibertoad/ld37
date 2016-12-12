@@ -22,15 +22,15 @@ public class PlayerModel {
     private final Map<String, ObservableInt> skills = new LinkedHashMap<>();
     
     public PlayerModel() {
-        stats.put("fitness", new ObservableInt(1));
-        stats.put("finesse", new ObservableInt(1));
-        stats.put("charm", new ObservableInt(1));
-        stats.put("luck", new ObservableInt(1));
-        stats.put("strength", new ObservableInt(1));
-        stats.put("intelligence", new ObservableInt(1));
-        stats.put("insight", new ObservableInt(1));
+        stats.put("health", new ObservableInt(1));
+        stats.put("satiation", new ObservableInt(1));
+        stats.put("inspiration", new ObservableInt(1));
+        stats.put("insanity", new ObservableInt(1));
+        stats.put("boredom", new ObservableInt(1));
         
         skills.put("programming", new ObservableInt(0));
+        skills.put("writing", new ObservableInt(0));
+        skills.put("cooking", new ObservableInt(0));
     }
 
 }

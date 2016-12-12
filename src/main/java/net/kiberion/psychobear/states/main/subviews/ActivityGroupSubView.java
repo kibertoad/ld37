@@ -20,7 +20,7 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
-@SubView(id = ActivityGroupSubView.SUB_VIEW_ID, parentView = MainView.class)
+@SubView(id = ActivityGroupSubView.SUB_VIEW_ID, parentViews = {MainView.class})
 @BoundCompositions(compositions = { "mainActivityGroups" })
 public class ActivityGroupSubView extends AbstractStateSubView<GameModel>{
 

@@ -28,7 +28,7 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 import net.kiberion.swampmachine.mvcips.states.annotations.SubView;
 
 @Component
-@SubView(id = ScheduleSubView.SUB_VIEW_ID, parentView = MainView.class)
+@SubView(id = ScheduleSubView.SUB_VIEW_ID, parentViews = {MainView.class})
 @BoundCompositions(compositions = { "mainSchedule" })
 public class ScheduleSubView extends AbstractStateSubView<GameModel> {
 

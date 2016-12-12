@@ -26,7 +26,7 @@ import net.kiberion.swampmachine.subscription.ObservableButtonEntrySource;
 import net.kiberion.swampmachine.utils.RandomUtils;
 
 @Component
-@SubView(id = VideosSubView.SUB_VIEW_ID, parentView = ProcessActivityView.class)
+@SubView(id = VideosSubView.SUB_VIEW_ID, parentViews = {ProcessActivityView.class})
 @BoundCompositions(compositions = { "activity-videos" })
 public class VideosSubView extends AbstractStateSubView<GameModel> {
 
@@ -61,7 +61,6 @@ public class VideosSubView extends AbstractStateSubView<GameModel> {
             };
 
             button.setOnClickEffect(onClickEffect);
-
             buttons.add(button);
         });
         entrySource.setValue(buttons);
