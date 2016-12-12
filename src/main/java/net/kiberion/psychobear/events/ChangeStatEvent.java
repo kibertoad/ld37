@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationEvent;
 
 import lombok.Getter;
 
-public class StatChangeEvent extends ApplicationEvent{
+public class ChangeStatEvent extends ApplicationEvent{
 
     /**
      * 
@@ -17,7 +17,7 @@ public class StatChangeEvent extends ApplicationEvent{
     @Getter
     private final int changeAmount;
     
-    public StatChangeEvent(Object source, String skillId, int changeAmount) {
+    public ChangeStatEvent(Object source, String skillId, int changeAmount) {
         super(source);
         this.skillId = skillId;
         this.changeAmount = changeAmount;

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.kiberion.psychobear.events.FinishedProcessingActivityEvent;
-import net.kiberion.psychobear.events.StatChangeEvent;
+import net.kiberion.psychobear.events.ChangeStatEvent;
 import net.kiberion.psychobear.model.PsychoBearVideo;
 import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
@@ -55,7 +55,7 @@ public class VideosSubView extends AbstractStateSubView<GameModel> {
             button.setText(video.getName());
 
             LambdaInvokable onClickEffect = () -> {
-                getEventPublisher().publishEvent(new StatChangeEvent(this, video.getSkill(), video.getSkillIncrease()));
+                getEventPublisher().publishEvent(new ChangeStatEvent(this, video.getSkill(), video.getSkillIncrease()));
                 getEventPublisher().publishEvent(new FinishedProcessingActivityEvent(this));
                 return null;
             };

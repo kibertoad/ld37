@@ -9,9 +9,21 @@
                950,
                750
             ],
-            "labelSource":"statsView.getStatList()",
+            "labelSource":"statsView.getStatsList()",
+            "zIndex":100
+         },
+         
+         {  
+            "type":"swLabelTable",
+            "id":"skillList",
+            "position":[  
+               1100,
+               750
+            ],
+            "labelSource":"statsView.getSkillsList()",
             "zIndex":100
          }         
+                  
       ]
    }
 ]

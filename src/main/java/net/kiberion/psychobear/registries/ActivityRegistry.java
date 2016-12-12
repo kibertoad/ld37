@@ -80,7 +80,7 @@ public class ActivityRegistry {
         //videos
         addNewVideo("programmingDummies", "Programming for dummies", "programming", 5);
         addNewVideo("cookingDummies", "Cooking for dummies", "cooking", 5);
-        addNewVideo("poetryDummies", "Poetry for dummies", "poetry", 5);
+        addNewVideo("writingDummies", "Poetry for dummies", "poetry", 5);
         addNewVideo("drawingDummies", "Drawing for dummies", "drawing", 5);
         addNewVideo("marketingDummies", "Marketing for dummies", "marketing", 5);
         addNewVideo("philosophyDummies", "Philosophy for dummies", "philosophy", 5);
