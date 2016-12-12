@@ -19,9 +19,14 @@ public class PsychoBearActivity extends CommonModelEntityDescriptor implements C
     @Setter
     private String viewName;
     
-    public PsychoBearActivity(String setName, String setCode) {
+    @Getter
+    @Setter
+    private String skill;
+    
+    public PsychoBearActivity(String setName, String setCode, String skill) {
         setName (setName);
         setId(setCode);
+        setSkill (skill);
     }
     
     @Override

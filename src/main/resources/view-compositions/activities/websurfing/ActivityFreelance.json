@@ -1,0 +1,30 @@
+[  
+   {  
+      "id":"activity-freelance",
+      "elements":[  
+         {  
+            "type":"swLabelTable",
+            "id":"resultText",
+            "position":[  
+               400,
+               400
+            ],
+            "labelSource":"activityFreelanceView.getProgressText()",
+            "zIndex":100
+         },
+         
+         {  
+            "type":"swTextButton",
+            "id":"okButton",
+            "text":"OK",
+            "onClickScript": "controller.activityFinished()",
+            "position":[  
+               840,
+               270
+            ]
+         }
+         
+                  
+      ]
+   }
+]

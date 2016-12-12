@@ -1,5 +1,6 @@
 package net.kiberion.psychobear.model.global;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -35,10 +36,8 @@ public class PlayerModel implements ApplicationEventPublisherAware{
             
     private ApplicationEventPublisher eventPublisher;
     
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-        this.eventPublisher = applicationEventPublisher;
-    }
+    private final Map<String, ObservableInt> freelanceProgress = new HashMap<>();
+    private final Map<String, ObservableInt> freelanceQuality = new HashMap<>();
     
     @Getter
     private final MutableInt cash = new MutableInt ();
@@ -63,7 +62,41 @@ public class PlayerModel implements ApplicationEventPublisherAware{
         skills.put(SKILL_WEBSOCIAL, new ObservableInt(0));
         skills.put(SKILL_PHILOSOPHY, new ObservableInt(0));
         skills.put(SKILL_COOKING, new ObservableInt(0));
+        
+        freelanceProgress.put(SKILL_PROGRAMMING, new ObservableInt(0));
+        freelanceProgress.put(SKILL_WRITING, new ObservableInt(0));
+        freelanceProgress.put(SKILL_DRAWING, new ObservableInt(0));
+        freelanceProgress.put(SKILL_WEBSOCIAL, new ObservableInt(0));
+
+        freelanceQuality.put(SKILL_PROGRAMMING, new ObservableInt(0));
+        freelanceQuality.put(SKILL_WRITING, new ObservableInt(0));
+        freelanceQuality.put(SKILL_DRAWING, new ObservableInt(0));
+        freelanceQuality.put(SKILL_WEBSOCIAL, new ObservableInt(0));
     }
+    
+    public Integer getFreelanceProgress (String ofSkill) {
+        return freelanceProgress.get(ofSkill).getValue();
+    }
+    
+    public Integer getFreelanceQuality (String ofSkill) {
+        return freelanceQuality.get(ofSkill).getValue();
+    }
+
+    public void addFreelanceProgress (String ofSkill, int amount) {
+        freelanceProgress.get(ofSkill).applyDelta(amount);
+    }
+    
+    public void addFreelanceQuality (String ofSkill, int amount) {
+        freelanceQuality.get(ofSkill).applyDelta(amount);
+    }
+    
+    
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.eventPublisher = applicationEventPublisher;
+    }
+    
+    
     
     /**
      * 

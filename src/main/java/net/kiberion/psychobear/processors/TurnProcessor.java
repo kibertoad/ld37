@@ -31,6 +31,7 @@ public class TurnProcessor implements ApplicationEventPublisherAware {
     @Getter
     private DayTime currentDayTime;
 
+    @Getter
     private PsychoBearActivity currentActivity;
 
     @Autowired
