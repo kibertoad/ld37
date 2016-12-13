@@ -6,8 +6,8 @@
             "type":"swTable",
             "id":"activityGroupList",
             "position":[  
-               400,
-               490
+               460,
+               512
             ],
             "buttonSource":"scheduleSubView.getSchedule()",
             "zIndex":100

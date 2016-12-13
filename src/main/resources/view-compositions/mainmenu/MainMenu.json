@@ -15,27 +15,15 @@
           "type": "swTable",
           "id": "table",
           "position": [
-            700,
-            410
+            645,
+            470
           ],
           "buttons": [
             {
-              "text": "Do you start a new game?",
+              "text": "Begin",
               "onClickEvent": {
                 "type": "changeState",
                 "stateId": "main"
-              }
-            },
-            
-            {
-              "text": "Will you continue an earlier adventure?",
-              "onClickScript": "controller.loadGame()"
-            },
-
-            {
-              "text": "Or should you return to real life, for now... ?",
-              "onClickListener": {
-                "type": "quit"
               }
             }
           ]
