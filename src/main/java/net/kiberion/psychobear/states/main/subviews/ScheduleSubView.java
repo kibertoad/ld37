@@ -27,6 +27,13 @@ import net.kiberion.swampmachine.gui.elements.SwampTextButton;
 import net.kiberion.swampmachine.gui.providers.ClickableElementSourceProvider;
 import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 
+import net.kiberion.swampmachine.assets.viewinfo.AnimationViewInfo;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
+
 @Component
 @SubView(id = ScheduleSubView.SUB_VIEW_ID, parentViews = {MainView.class})
 @BoundCompositions(compositions = { "mainSchedule" })
@@ -101,6 +108,46 @@ public class ScheduleSubView extends AbstractStateSubView<PlayerModel> {
         boolean isAllActivitiesSelected = controller.isAllActivitiesSelected();
         //nextTurn.setDisabled(!isAllActivitiesSelected);
         //nextTurn.setVisible(isAllActivitiesSelected);
+    }
+
+    private boolean fire_once = true;
+    private Animation animation;
+    private float stateTime = 0.0f;
+    private SpriteBatch spriteBatch;
+
+    @Override
+    public void render() {
+        if (fire_once) {
+            fire_once = false;
+
+            animation = getAnimation("hacking/hacking.", 10, 0.04f);
+            spriteBatch = new SpriteBatch();
+        }
+        stateTime += Gdx.graphics.getDeltaTime();
+        spriteBatch.begin();
+        spriteBatch.draw(animation.getKeyFrame(stateTime, true), 50, 50);
+        spriteBatch.end();
+    }
+
+    private final String PATH_PREFIX = "ani/";
+    private final String PATH_SUFFIX = ".jpg";
+
+    public Animation getAnimation(String image, int frameCount, float frameDuration) {
+        TextureRegion[] frames = new TextureRegion[frameCount];
+
+        for (int i = 0; i < frameCount; ++i) {
+            frames[i] =
+                new TextureRegion(
+                    new Texture(
+                        Gdx.files.internal(
+                            PATH_PREFIX+image+String.format("%04d", i)+PATH_SUFFIX
+                        )
+                    )
+                );
+        }
+
+        Animation animation = new Animation(frameDuration, frames);
+        return animation;
     }
 
 }
