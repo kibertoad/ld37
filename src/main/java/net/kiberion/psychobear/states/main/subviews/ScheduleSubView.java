@@ -7,6 +7,11 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.google.common.collect.ImmutableMap;
 
 import lombok.Getter;
@@ -26,13 +31,6 @@ import net.kiberion.swampmachine.gui.annotations.BoundCompositions;
 import net.kiberion.swampmachine.gui.elements.SwampTextButton;
 import net.kiberion.swampmachine.gui.providers.ClickableElementSourceProvider;
 import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
-
-import net.kiberion.swampmachine.assets.viewinfo.AnimationViewInfo;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.Gdx;
 
 @Component
 @SubView(id = ScheduleSubView.SUB_VIEW_ID, parentViews = {MainView.class})
@@ -116,6 +114,7 @@ public class ScheduleSubView extends AbstractStateSubView<PlayerModel> {
     private float stateTime = 0.0f;
     private SpriteBatch spriteBatch;
 
+    /*
     @Override
     public void render() {
         if (fire_once) {
@@ -129,6 +128,7 @@ public class ScheduleSubView extends AbstractStateSubView<PlayerModel> {
         spriteBatch.draw(animation.getKeyFrame(stateTime, true), 50, 50);
         spriteBatch.end();
     }
+    */
 
     private final String PATH_PREFIX = "ani/";
     private final String PATH_SUFFIX = ".jpg";
