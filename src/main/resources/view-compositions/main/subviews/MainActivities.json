@@ -18,8 +18,8 @@
             "text":"Cancel",
             "onClickScript": "controller.cancelActivitySelection()",
             "position":[  
-               1100,
-               400
+               800,
+               270
             ]
          }
       ]

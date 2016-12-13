@@ -37,8 +37,9 @@ public class ScheduleSubView extends AbstractStateSubView<PlayerModel> {
     private final Map<DayTime, CommonModelEntityDescriptor> dayTimeDescriptors = ImmutableMap
             .<DayTime, CommonModelEntityDescriptor> builder()
             .put(DayTime.DAY, new CommonModelEntityDescriptor("Day", DayTime.DAY.name()))
-            .put(DayTime.EVENING, new CommonModelEntityDescriptor("Evening", DayTime.EVENING.name()))
-            .put(DayTime.NIGHT, new CommonModelEntityDescriptor("Night", DayTime.NIGHT.name())).build();
+//            .put(DayTime.EVENING, new CommonModelEntityDescriptor("Evening", DayTime.EVENING.name()))
+            .put(DayTime.NIGHT, new CommonModelEntityDescriptor("Night", DayTime.NIGHT.name()))
+            .build();
 
     @Autowired
     @Getter

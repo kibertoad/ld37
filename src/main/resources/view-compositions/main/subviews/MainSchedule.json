@@ -18,7 +18,7 @@
             "text":"Start day",
             "onClickScript": "controller.nextTurn()",
             "position":[  
-               1200,
+               800,
                400
             ]
          }

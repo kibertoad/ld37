@@ -3,6 +3,7 @@ package net.kiberion.psychobear.registries;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -36,10 +37,10 @@ public class ActivityRegistry {
     private PlayerModel playerModel;
 
     @Getter
-    private final Map<String, CommonModelEntityDescriptor> groups = new HashMap<>();
+    private final Map<String, CommonModelEntityDescriptor> groups = new LinkedHashMap<>();
 
     @Getter
-    private final Map<String, PsychoBearActivity> activities = new HashMap<>();
+    private final Map<String, PsychoBearActivity> activities = new LinkedHashMap<>();
 
     @Getter
     private final Map<String, PsychoBearVideo> videos = new HashMap<>();
@@ -49,10 +50,10 @@ public class ActivityRegistry {
 
     public ActivityRegistry() {
         // activity groups
-        addNewGroup("programming", "Programming");
-        addNewGroup("content", "Content creation");
+        //addNewGroup("programming", "Programming");
+        addNewGroup("content", "Hobby");
         addNewGroup("freelancing", "Freelancing");
-        addNewGroup("websocial", "Web-social");
+        //addNewGroup("websocial", "Web-social");
         addNewGroup("websurfing", "Websurfing");
 
         // activities
@@ -73,11 +74,11 @@ public class ActivityRegistry {
         addNewActivity("botnet", "Botnet", "programming", "programming", conditions);
         // addNewActivity("ai", "AI", "programming", conditions);
 
-        addNewActivity("poetry", "Poetry", "content", PlayerModel.SKILL_WRITING, conditions);
-        addNewActivity("games", "Games", "content", PlayerModel.SKILL_PROGRAMMING, conditions);
+        addNewActivity("poetry", "Write poetry", "content", PlayerModel.SKILL_WRITING, conditions);
+        addNewActivity("games", "Program games", "content", PlayerModel.SKILL_PROGRAMMING, conditions);
         //addNewActivity("fanfiction", "Fanfiction", "content", PlayerModel.SKILL_WRITING, conditions);
-        addNewActivity("webcomics", "Webcomics", "content", PlayerModel.SKILL_DRAWING, conditions);
-        addNewActivity("record", "Video", "content", PlayerModel.SKILL_WEBSOCIAL, conditions);
+        addNewActivity("webcomics", "Draw webcomics", "content", PlayerModel.SKILL_DRAWING, conditions);
+        addNewActivity("record", "Record a video", "content", PlayerModel.SKILL_WEBSOCIAL, conditions);
 
         addNewActivity("freelance-programming", "Programming", "freelancing", PlayerModel.SKILL_PROGRAMMING,
                 conditions);

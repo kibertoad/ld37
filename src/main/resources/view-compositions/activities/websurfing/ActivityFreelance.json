@@ -7,7 +7,7 @@
             "id":"resultText",
             "position":[  
                400,
-               400
+               200
             ],
             "labelSource":"activityFreelanceView.getProgressText()",
             "zIndex":100
