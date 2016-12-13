@@ -11,7 +11,7 @@ import com.google.common.collect.ImmutableMap;
 
 import lombok.Getter;
 import net.kiberion.psychobear.model.PsychoBearActivity;
-import net.kiberion.psychobear.model.global.GameModel;
+import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.psychobear.states.main.MainController;
 import net.kiberion.psychobear.states.main.MainController.DayTime;
@@ -30,7 +30,7 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 @Component
 @SubView(id = ScheduleSubView.SUB_VIEW_ID, parentViews = {MainView.class})
 @BoundCompositions(compositions = { "mainSchedule" })
-public class ScheduleSubView extends AbstractStateSubView<GameModel> {
+public class ScheduleSubView extends AbstractStateSubView<PlayerModel> {
 
     public static final String SUB_VIEW_ID = "scheduleSubView";
 

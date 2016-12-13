@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import net.kiberion.psychobear.events.StatsChangedEvent;
 import net.kiberion.psychobear.model.PsychoBearGoods;
-import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.psychobear.states.activity.ProcessActivityController;
@@ -27,7 +26,7 @@ import net.kiberion.swampmachine.subscription.ObservableButtonEntrySource;
 @Component
 @SubView(id = ShoppingSubView.SUB_VIEW_ID, parentViews = { ProcessActivityView.class })
 @BoundCompositions(compositions = { "activity-shopping" })
-public class ShoppingSubView extends AbstractStateSubView<GameModel> {
+public class ShoppingSubView extends AbstractStateSubView<PlayerModel> {
 
     private static final Logger log = LogManager.getLogger();
 
@@ -57,10 +56,10 @@ public class ShoppingSubView extends AbstractStateSubView<GameModel> {
             button.setText(goods.getName() + " ($" + goods.getPrice() + ")");
             LambdaInvokable onClickEffect = () -> {
 
-                if (playerModel.getCash() >= goods.getPrice()) {
-                    playerModel.changeStatsFromMap(goods.getStatChanges());
+                if (getModel().getCash() >= goods.getPrice()) {
+                    getModel().changeStatsFromMap(goods.getStatChanges());
                     controller.activityFinished();
-                    playerModel.changeStat(PlayerModel.STAT_CASH, goods.getPrice() * -1);
+                    getModel().changeStat(PlayerModel.STAT_CASH, goods.getPrice() * -1);
                     getEventPublisher().publishEvent(new StatsChangedEvent(this));
                 }
                 return null;

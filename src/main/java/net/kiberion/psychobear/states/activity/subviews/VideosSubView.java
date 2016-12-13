@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.kiberion.psychobear.model.PsychoBearVideo;
-import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.psychobear.states.activity.ProcessActivityController;
@@ -28,7 +27,7 @@ import net.kiberion.swampmachine.utils.RandomUtils;
 @Component
 @SubView(id = VideosSubView.SUB_VIEW_ID, parentViews = {ProcessActivityView.class})
 @BoundCompositions(compositions = { "activity-videos" })
-public class VideosSubView extends AbstractStateSubView<GameModel> {
+public class VideosSubView extends AbstractStateSubView<PlayerModel> {
 
     private static final Logger log = LogManager.getLogger();
 
@@ -42,9 +41,6 @@ public class VideosSubView extends AbstractStateSubView<GameModel> {
     @Autowired
     private ProcessActivityController controller;
     
-    @Autowired
-    private PlayerModel playerModel;
-
     public EntrySource<ButtonEntry> getVideoList() {
         return entrySource;
     }
@@ -61,8 +57,8 @@ public class VideosSubView extends AbstractStateSubView<GameModel> {
             button.setText(video.getName());
 
             LambdaInvokable onClickEffect = () -> {
-                playerModel.changeSkill(video.getSkill(), video.getSkillIncrease());
-                playerModel.changeStatsFromMap (video.getStatChanges());
+                getModel().changeSkill(video.getSkill(), video.getSkillIncrease());
+                getModel().changeStatsFromMap (video.getStatChanges());
                 controller.activityFinished();
                 return null;
             };

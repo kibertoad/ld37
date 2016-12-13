@@ -39,15 +39,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "swLabel",
-          "id": "buttonMenu",
-          "text": "Label",
-          "position": [
-            200,
-            200
-          ]
         }
       ]
     }

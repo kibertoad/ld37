@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
-import net.kiberion.psychobear.model.global.GameModel;
+import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.registries.ActivityRegistry;
 import net.kiberion.psychobear.states.main.MainController;
 import net.kiberion.psychobear.states.main.MainView;
@@ -22,7 +22,7 @@ import net.kiberion.swampmachine.gui.view.AbstractStateSubView;
 @Component
 @SubView(id = ActivityGroupSubView.SUB_VIEW_ID, parentViews = {MainView.class})
 @BoundCompositions(compositions = { "mainActivityGroups" })
-public class ActivityGroupSubView extends AbstractStateSubView<GameModel>{
+public class ActivityGroupSubView extends AbstractStateSubView<PlayerModel>{
 
     public static final String SUB_VIEW_ID = "activityGroupSubView";
     

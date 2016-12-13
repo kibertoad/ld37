@@ -7,13 +7,11 @@ import java.util.Map.Entry;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import net.kiberion.psychobear.events.SkillsChangedEvent;
 import net.kiberion.psychobear.events.StatsChangedEvent;
-import net.kiberion.psychobear.model.global.GameModel;
 import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.states.activity.ProcessActivityView;
 import net.kiberion.psychobear.states.main.MainView;
@@ -29,7 +27,7 @@ import net.kiberion.swampmachine.subscription.ObservableTextEntrySource;
 @Component
 @SubView(id = StatsSubView.SUB_VIEW_ID, parentViews = {MainView.class, ProcessActivityView.class}, isConstant = true, zIndex = 1)
 @BoundCompositions(compositions = { "stats" })
-public class StatsSubView extends AbstractStateSubView<GameModel> {
+public class StatsSubView extends AbstractStateSubView<PlayerModel> {
 
     private static final Logger log = LogManager.getLogger();
 
@@ -37,9 +35,6 @@ public class StatsSubView extends AbstractStateSubView<GameModel> {
 
     private final ObservableTextEntrySource statSource = new ObservableTextEntrySource();
     private final ObservableTextEntrySource skillSource = new ObservableTextEntrySource();
-
-    @Autowired
-    private PlayerModel player;
 
     public EntrySource<TextEntry> getStatsList() {
         return statSource;
@@ -54,7 +49,7 @@ public class StatsSubView extends AbstractStateSubView<GameModel> {
         log.info("Get stats");
         List<TextEntry> entries = new ArrayList<>();
 
-        for (Entry<String, ObservableInt> entry : player.getStats().entrySet()) {
+        for (Entry<String, ObservableInt> entry : getModel().getStats().entrySet()) {
             CommonTextEntry textEntry = new CommonTextEntry (StringUtils.capitalize(entry.getKey())+": "+entry.getValue().getValue());
             entries.add(textEntry);
         }
@@ -66,7 +61,7 @@ public class StatsSubView extends AbstractStateSubView<GameModel> {
         log.info("Get skills");
         List<TextEntry> entries = new ArrayList<>();
 
-        for (Entry<String, ObservableInt> entry : player.getSkills().entrySet()) {
+        for (Entry<String, ObservableInt> entry : getModel().getSkills().entrySet()) {
             CommonTextEntry textEntry = new CommonTextEntry (StringUtils.capitalize(entry.getKey())+": "+entry.getValue().getValue());
             entries.add(textEntry);
         }

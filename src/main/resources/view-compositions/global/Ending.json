@@ -1,0 +1,30 @@
+[  
+   {  
+      "id":"ending",
+      "elements":[  
+        
+         {  
+            "type":"swLabelTable",
+            "id":"resultText",
+            "position":[  
+               400,
+               400
+            ],
+            "labelSource":"view.getEndingText()",
+            "zIndex":100
+         },
+         
+         {  
+            "type":"swTextButton",
+            "id":"okButton",
+            "text":"OK",
+            "onClickScript": "controller.gameOver()",
+            "position":[  
+               840,
+               270
+            ]
+         }     
+                  
+      ]
+   }
+]

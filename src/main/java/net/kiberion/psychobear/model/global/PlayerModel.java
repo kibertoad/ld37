@@ -25,6 +25,7 @@ public class PlayerModel implements ApplicationEventPublisherAware {
     public static final String STAT_INSANITY = "insanity";
     public static final String STAT_BOREDOM = "boredom";
     public static final String STAT_CASH = "cash";
+    public static final String STAT_FAME = "fame";
 
     public static final String SKILL_PROGRAMMING = "programming";
     public static final String SKILL_WRITING = "writing";
@@ -54,6 +55,7 @@ public class PlayerModel implements ApplicationEventPublisherAware {
         stats.put(STAT_INSANITY, new ObservableInt(10));
         stats.put(STAT_BOREDOM, new ObservableInt(30));
         stats.put(STAT_CASH, new ObservableInt(20));
+        stats.put(STAT_FAME, new ObservableInt(0));
 
         skills.put(SKILL_PROGRAMMING, new ObservableInt(0));
         skills.put(SKILL_WRITING, new ObservableInt(0));
@@ -162,6 +164,10 @@ public class PlayerModel implements ApplicationEventPublisherAware {
         Validate.notNull(skill, "Unknown skill: " + skillId);
         skill.applyDelta(delta);
         eventPublisher.publishEvent(new SkillsChangedEvent(this));
+    }
+
+    public Integer getStatValue(String statId) {
+        return getStats().get(statId).getValue();
     }
 
 }

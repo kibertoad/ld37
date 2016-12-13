@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.kiberion.psychobear.model.global.GameModel;
+import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.states.global.StatsSubView;
 import net.kiberion.psychobear.states.main.subviews.ActivityGroupSubView;
 import net.kiberion.psychobear.states.main.subviews.ScheduleSubView;
@@ -16,7 +16,7 @@ import net.kiberion.swampmachine.utils.ListUtils;
 
 @Component
 @BoundCompositions(compositions = { "main" })
-public class MainView extends AbstractStateView<GameModel>{
+public class MainView extends AbstractStateView<PlayerModel>{
 
     @Autowired
     private ActivityGroupSubView activityGroupSubView;

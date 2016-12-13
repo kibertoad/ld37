@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.kiberion.psychobear.model.global.GameModel;
+import net.kiberion.psychobear.model.global.PlayerModel;
 import net.kiberion.psychobear.processors.TurnProcessor;
 import net.kiberion.psychobear.states.activity.subviews.VideosSubView;
 import net.kiberion.psychobear.states.global.StatsSubView;
@@ -16,7 +16,7 @@ import net.kiberion.swampmachine.utils.ListUtils;
 
 @Component
 @BoundCompositions(compositions = { "process-activity" })
-public class ProcessActivityView extends AbstractStateView<GameModel>{
+public class ProcessActivityView extends AbstractStateView<PlayerModel>{
 
     @Autowired
     private TurnProcessor turnProcessor;

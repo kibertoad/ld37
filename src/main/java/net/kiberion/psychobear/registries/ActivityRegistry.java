@@ -65,7 +65,7 @@ public class ActivityRegistry {
 
         // addNewActivity("publishing", "Publish content", "websocial",
         // conditions);
-        addNewActivity("persona", "Social media persona", "websocial", "websocial", conditions);
+        //addNewActivity("persona", "Social media persona", "websocial", "websocial", conditions);
         addNewActivity("cult", "Cult", "websocial", "philosophy", conditions);
 
         // addNewActivity("website", "Website", "programming", conditions);
