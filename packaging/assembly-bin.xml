@@ -30,6 +30,7 @@
             <outputDirectory></outputDirectory>
             <includes>
                 <include>run.bat</include>
+                <include>run.sh</include>
             </includes>
         </fileSet>
         <!-- adds jar package to the root directory of zip package -->
@@ -49,7 +50,7 @@
         </fileSet>
         <fileSet>
             <directory>src/main/resources/</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory>src/main/resources/</outputDirectory>
             <includes>
                 <include>**</include>
             </includes>
